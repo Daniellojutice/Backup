@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+	<style type="text/css">
+		h1,h2{
+			padding-top: 1em !important;
+			font-family: Adamina;
+			color: rgb(95,140,245) !important;
+			font-size: 17;
+			padding: 5;
+			font-style: italic;
+		}
+		#list_few{
+			font-size: 15;
+		}
+		body{
+			background-image: url("http://www.sparkcreations.in/images/Web-Page-Background.jpg");
+
+		    margin: 1em 10% !important;
+		    max-width: 80em !important;
+	
+		}
+
+		#info{
+			font-size:0.7cm !important;
+		}
+		.form-control{
+			font-size:0.5cm !important;
+		}
+
+	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+		<h1 style="text-align:center;">Spelling Checking</h1>
+
+	<br/>
+	<form  action="/search" method="post"  class="form-horizontal" >
+		<div style="text-align:center;">
+			<input  style="text-align:center;" type="text" name="dic" value="" autofocus="true" class="form-control" /><br/>
+			<input  type="submit" name="dosubmit" value="Check" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-search"></span>
+		</div>
+	
+	</form>
+	
+	<div id="info"  class="alert alert-danger">
+		<p style="text-align:center;" >{{ link }}</p>
+	</div>
+
+	<div id="looking" >
+		<h2>Are you look for:</h2>
+	</div >
+
+	<div id="listM">
+		<ul id="list_many">
+				
+		</ul>
+	</div>
+
+
+	<div id="listF">
+		<ul id="list_few">
+			<li >{{ final_list }}</li>
+		</ul>
+	</div>
+
+
+	<a href="/index">Back</a>
+
+
+	<script type="text/javascript">
+		var list = "{{final_list}}";
+
+		var word = list.split(',');
+
+		if (list == "" ) {
+			var info = document.getElementById('info');
+			info.setAttribute('class','alert alert-success');
+		}
+
+		
+		if (word.length > 0) {
+			var list_many_pos = document.getElementById('list_many');
+			var list_few_pos = document.getElementById('listF');
+
+			for( var key in word){
+				var node = document.createElement("li"); 
+				var textnode = document.createTextNode(word[key]);  
+				node.appendChild(textnode);
+				list_many_pos.appendChild(node);
+			}
+			list_few_pos.style.display = 'none';
+		}
+
+		
+	</script>
+
+</body>
+</html>

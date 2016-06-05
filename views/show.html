@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Project</title>
+	<style type="text/css">
+
+		body{
+			background-image: url("https://www.cudedesign.co.uk/wp-content/uploads/2016/03/photodune-14543987-web-development-concept-on-laptop-screen-m.jpg") !important;
+		    margin: 1em 10% !important;
+		    max-width: 80em !important;
+		}
+
+		.carousel-inner > .item > img,
+		.carousel-inner > .item > a > img {
+		    width: 70%;
+		    max-height: 450px;
+		   	margin-left: 10%;
+		}
+
+		#satellite{
+			margin-bottom: 5%; 
+			padding-bottom: 5%;
+			background: rgba(255,255,255,0.9);
+		}
+		#search-bar{
+			margin-top:5%;
+			background: rgba(255,255,255,0.9);
+		}
+		#random-pic{
+			margin-top:5%;
+			background: rgba(255,255,255,0.9);
+		}
+		#music{
+			margin-top:5%;
+			background: rgba(255,255,255,0.9);
+		}
+		#estx{
+			margin-top:5%;
+			background: rgba(255,255,255,0.9);
+
+		}
+		.font-style {
+			font-family: Adamina;
+			color: #3D2828;
+			font-size: 17 !important;
+			padding: 5;
+			font-style: italic;
+		}
+
+
+	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<br/><br/>
+	<h1 class="font-style" class="page-header" style="text-align: center; background: rgba(255,255,255,0.5);;">Project Demo</h1>
+
+	<hr/>
+
+	
+	<div id="estx">
+		<h2 class="font-style">ESTX 50 PR.EUR(道瓊斯歐洲 50 指數) ------- {{ stockindex }}</h2>
+	
+	</div>
+
+	<div id="satellite">
+		<h2 class="font-style">Satellite Images:</h2>
+		<div style="text-align: center;" >
+			<img id="holder" alt="Remote Sensing" width="500" height="500" border="1">
+		</div>
+	</div>
+
+
+	<hr/>
+
+	<div id="search-bar">
+		<h2 class="font-style">Spelling Checking:</h2>
+		<form  action="/search" method="post" >
+			<div  style="text-align:center;">
+				<input type="text" name="dic" value=""  style="text-align:center;" class="form-control" /><br/>
+				<input type="submit" name="dosubmit" value="Check" class="btn btn-lg btn-info" /><span class="glyphicon glyphicon-search"></span>
+			</div>
+		</form>
+	</div>
+
+
+	<hr/>
+
+	<div id="random-pic">
+		<h2 class="font-style">Random Picture:</h2>
+		<div class="container" >
+		  <br>
+		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		    <!-- Indicators -->
+		    <ol class="carousel-indicators">
+		      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		      <li data-target="#myCarousel" data-slide-to="1"></li>
+		      <li data-target="#myCarousel" data-slide-to="2"></li>
+		      <li data-target="#myCarousel" data-slide-to="3"></li>
+		    </ol>
+
+		    <!-- Wrapper for slides -->
+		    <div class="carousel-inner" role="listbox">
+		      <div class="item active">
+		        <img src={{pichref}} alt="Picture1" width="460" height="345">
+		      </div>
+
+		      <div class="item">
+		        <img src="http://img02.tooopen.com/images/20160412/tooopen_sy_159146612236.jpg" alt="Picture2" width="460" height="345">
+		      </div>
+		    
+		      <div class="item">
+		        <img src="http://img02.tooopen.com/images/20160328/tooopen_sy_157588914468.jpg" alt="Picture3" width="460" height="345">
+		      </div>
+
+		      <div class="item">
+		        <img src="http://img02.tooopen.com/images/20160320/tooopen_sy_156512393637.jpg" alt="Picture4" width="460" height="345">
+		      </div>
+		    </div>
+
+		    <!-- Left and right controls -->
+		    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		      <span class="sr-only">Previous</span>
+		    </a>
+		    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		      <span class="sr-only">Next</span>
+		    </a>
+		  </div>
+		</div>
+	</div>
+
+	<hr/>
+
+	<div id="music">
+		<h2 class="font-style">Music:</h2>
+		<div style="text-align:center;">
+			<h2 class="font-style">Rainy Day by Sungha Jung</h2>
+			<audio controls style=" width: 100%;">
+			  <source src="https://api.soundcloud.com/tracks/210300597/stream?consumer_key=218d5731207122c1612c55c3a53cd001" type="audio/mpeg">
+		</div>
+	</div>
+
+
+
+
+<script type="text/javascript">
+
+
+	var num = ['01','02','03','04','05','06','07','08','09','10'];
+	var url = new Array();
+	var count = 0;
+	var href = "{{ href }}";
+	var link = href.split("10");
+	var front = link[0];
+	var back = link[1];
+
+
+	for (var i = 0 ;i < num.length; i++) {
+		url.push('http://'+front + num[i] + back);
+	}
+
+	var holder = document.getElementById("holder");
+	
+	holder.setAttribute('src',url[0]);
+
+	function starttimer() 
+	{
+		count++;
+		if(count >= url.length) 
+			count = 0
+
+		holder = document.getElementById("holder");
+		holder.setAttribute('src',url[count]);
+		setTimeout("starttimer()",500);
+	}
+
+	$('.carousel').carousel({
+	  interval: 2500
+	})
+
+	window.onload = starttimer;
+</script>
+
+
+	
+
+</body>
+</html>
